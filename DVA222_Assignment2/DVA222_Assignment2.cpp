@@ -8,12 +8,13 @@
 #include "Graphix.h"
 
 #include "Ball.h"
-
+#include "Rectangle.h"
 
 int ballCount = 10;
+int redRectangleCount = 2;
 
 Ball **balls = new Ball*[ballCount];
-
+Rectangle **rectangles = new Rectangle*[redRectangleCount];
 
 		 
 int _tmain(int argc, char** argv)
@@ -28,6 +29,10 @@ int _tmain(int argc, char** argv)
 	{
 		balls[i] = new Ball(400, 300, 10);
 		balls[i]->SetSpeed(Vector(10 * rand() / RAND_MAX -5 , 10 * rand() / RAND_MAX -5));
+	}
+	for (int i = 0; i < redRectangleCount; i++)
+	{
+		rectangles[i] = new Rectangle(300, 400, 10, 20);
 	}
 
 	
@@ -56,6 +61,11 @@ void Draw()
 	{
 		balls[i]->Update();
 		balls[i]->Draw();
+	}
+
+	for (int i = 0; i < redRectangleCount; i++)
+	{
+		rectangles[i]->Draw();
 	}
 
 
