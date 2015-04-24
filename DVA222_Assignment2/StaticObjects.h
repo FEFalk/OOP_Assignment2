@@ -6,5 +6,7 @@ class StaticObjects : public Shape
 public:
 	StaticObjects();
 	~StaticObjects();
+
+	
 };
 

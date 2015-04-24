@@ -9,3 +9,4 @@ StaticObjects::StaticObjects()
 StaticObjects::~StaticObjects()
 {
 }
+

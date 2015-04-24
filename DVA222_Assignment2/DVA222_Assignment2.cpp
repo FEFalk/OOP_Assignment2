@@ -8,13 +8,13 @@
 #include "Graphix.h"
 
 #include "Ball.h"
-#include "Rectangle.h"
+#include "SpeedRectangle.h"
 
-int ballCount = 10;
-int redRectangleCount = 2;
+int ballCount = 20;
+int speedRectangleCount = 2;
 
 Ball **balls = new Ball*[ballCount];
-Rectangle **rectangles = new Rectangle*[redRectangleCount];
+SpeedRectangle **speedRectangles = new SpeedRectangle*[speedRectangleCount];
 
 		 
 int _tmain(int argc, char** argv)
@@ -30,10 +30,9 @@ int _tmain(int argc, char** argv)
 		balls[i] = new Ball(400, 300, 10);
 		balls[i]->SetSpeed(Vector(10 * rand() / RAND_MAX -5 , 10 * rand() / RAND_MAX -5));
 	}
-	for (int i = 0; i < redRectangleCount; i++)
-	{
-		rectangles[i] = new Rectangle(300, 400, 10, 20);
-	}
+
+	speedRectangles[0] = new SpeedRectangle(200, 400, 100, 50);
+	speedRectangles[1] = new SpeedRectangle(400, 200, 50, 100);
 
 	
 	//NOTE:
@@ -61,11 +60,16 @@ void Draw()
 	{
 		balls[i]->Update();
 		balls[i]->Draw();
+
 	}
 
-	for (int i = 0; i < redRectangleCount; i++)
+	for (int i = 0; i < speedRectangleCount; i++)
 	{
-		rectangles[i]->Draw();
+		speedRectangles[i]->Draw();
+		for (int j = 0; j < ballCount; j++)
+		{
+			speedRectangles[i]->onCollisionEnter(*balls[j]);
+		}
 	}
 
 

@@ -16,6 +16,7 @@ void MovingObjects::Update()
 {
 	position.X += speed.X;
 	position.Y += speed.Y;
+	
 }
 
 
