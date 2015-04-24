@@ -11,9 +11,10 @@
 #include "Rectangle.h"
 
 int ballCount = 10;
-int rectangleCount = 5;
+int redRectangleCount = 2;
+
 Ball **balls = new Ball*[ballCount];
-Rectangle **rectangles = new Rectangle*[rectangleCount];
+Rectangle **rectangles = new Rectangle*[redRectangleCount];
 
 		 
 int _tmain(int argc, char** argv)
@@ -29,10 +30,11 @@ int _tmain(int argc, char** argv)
 		balls[i] = new Ball(400, 300, 10);
 		balls[i]->SetSpeed(Vector(10 * rand() / RAND_MAX -5 , 10 * rand() / RAND_MAX -5));
 	}
-	for (int j = 0; j < rectangleCount; j++)
+	for (int i = 0; i < redRectangleCount; i++)
 	{
-		rectangles[j] = new Rectangle(rand() % 200, rand() % 200, 25, 25);
+		rectangles[i] = new Rectangle(300, 400, 10, 20);
 	}
+
 	
 	//NOTE:
 	//----------------------------------------------------------------------
@@ -60,10 +62,12 @@ void Draw()
 		balls[i]->Update();
 		balls[i]->Draw();
 	}
-	for (int j = 0; j < rectangleCount; j++)
+
+	for (int i = 0; i < redRectangleCount; i++)
 	{
-		rectangles[j]->Draw();
+		rectangles[i]->Draw();
 	}
+
 
 	Redraw();
 }

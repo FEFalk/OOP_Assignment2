@@ -1,6 +1,6 @@
 #pragma once
 #include "StaticObjects.h"
-#include "Structs.h"
+
 class Rectangle : public StaticObjects
 {
 public:
