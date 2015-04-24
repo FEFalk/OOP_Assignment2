@@ -7,7 +7,6 @@ Ball::Ball(int x, int y, int r)
 	position.X = x;
 	position.Y = y;
 	radius = r;
-
 }
 
 //Destructor

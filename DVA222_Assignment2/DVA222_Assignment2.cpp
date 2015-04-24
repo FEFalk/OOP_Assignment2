@@ -8,14 +8,15 @@
 #include "Graphix.h"
 
 #include "Ball.h"
+#include "SpeedRectangle.h"
 #include "Rectangle.h"
 #include "Line.h"
 
-int ballCount = 10;
-int redRectangleCount = 5;
-int lineCount = 1;
+int ballCount = 20;
+int speedRectangleCount = 2;
 
 Ball **balls = new Ball*[ballCount];
+SpeedRectangle **speedRectangles = new SpeedRectangle*[speedRectangleCount];
 Rectangle **rectangles = new Rectangle*[redRectangleCount];
 Line **lines = new Line*[lineCount];
 
@@ -33,6 +34,9 @@ int _tmain(int argc, char** argv)
 		balls[i] = new Ball(400, 300, 10);
 		balls[i]->SetSpeed(Vector(10 * rand() / RAND_MAX -5 , 10 * rand() / RAND_MAX -5));
 	}
+
+	speedRectangles[0] = new SpeedRectangle(200, 400, 100, 50);
+	speedRectangles[1] = new SpeedRectangle(400, 200, 50, 100);
 	for (int i = 0; i < redRectangleCount; i++)
 	{
 		rectangles[i] = new Rectangle(rand()%300, rand()%400, 10, 20);
@@ -41,7 +45,7 @@ int _tmain(int argc, char** argv)
 	{
 		lines[i] = new Line(20, 20, 200, 20);
 	}
-	
+
 	//NOTE:
 	//----------------------------------------------------------------------
 	//Below this line control of your main is passed to graphix library
@@ -67,11 +71,16 @@ void Draw()
 	{
 		balls[i]->Update();
 		balls[i]->Draw();
+
 	}
 
-	for (int i = 0; i < redRectangleCount; i++)
+	for (int i = 0; i < speedRectangleCount; i++)
 	{
-		rectangles[i]->Draw();
+		speedRectangles[i]->Draw();
+		for (int j = 0; j < ballCount; j++)
+	{
+			speedRectangles[i]->onCollisionEnter(*balls[j]);
+		}
 	}
 
 	for (int i = 0; i < lineCount; i++)

@@ -1,6 +1,6 @@
 #pragma once
 #include "StaticObjects.h"
-
+#include "Ball.h"
 class Rectangle : public StaticObjects
 {
 public:
@@ -10,8 +10,10 @@ public:
 	virtual void Draw();
 	Size getSize();
 
+	void onCollisionEnter(Ball &ball);
 
 protected:
 	Size size;
+
 };
 
