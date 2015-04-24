@@ -9,12 +9,15 @@
 
 #include "Ball.h"
 #include "Rectangle.h"
+#include "Line.h"
 
 int ballCount = 10;
-int redRectangleCount = 2;
+int redRectangleCount = 5;
+int lineCount = 1;
 
 Ball **balls = new Ball*[ballCount];
 Rectangle **rectangles = new Rectangle*[redRectangleCount];
+Line **lines = new Line*[lineCount];
 
 		 
 int _tmain(int argc, char** argv)
@@ -32,9 +35,12 @@ int _tmain(int argc, char** argv)
 	}
 	for (int i = 0; i < redRectangleCount; i++)
 	{
-		rectangles[i] = new Rectangle(300, 400, 10, 20);
+		rectangles[i] = new Rectangle(rand()%300, rand()%400, 10, 20);
 	}
-
+	for (int i = 0; i < lineCount; i++)
+	{
+		lines[i] = new Line(20, 20, 200, 20);
+	}
 	
 	//NOTE:
 	//----------------------------------------------------------------------
@@ -66,6 +72,11 @@ void Draw()
 	for (int i = 0; i < redRectangleCount; i++)
 	{
 		rectangles[i]->Draw();
+	}
+
+	for (int i = 0; i < lineCount; i++)
+	{
+		lines[i]->Draw();
 	}
 
 
