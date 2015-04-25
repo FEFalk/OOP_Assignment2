@@ -78,7 +78,6 @@ void Draw()
 		}
 		balls[i]->Update();
 		balls[i]->Draw();
-
 	}
 
 	for (int i = 0; i < speedRectangleCount; i++)
