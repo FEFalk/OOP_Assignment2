@@ -1,6 +1,7 @@
 #pragma once
 #include "StaticObjects.h"
-#include "Ball.h"
+
+
 class Rectangle : public StaticObjects
 {
 public:

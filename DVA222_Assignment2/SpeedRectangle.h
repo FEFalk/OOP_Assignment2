@@ -1,6 +1,5 @@
 #pragma once
 #include "Rectangle.h"
-#include "Ball.h"
 
 class SpeedRectangle: public Rectangle
 {
