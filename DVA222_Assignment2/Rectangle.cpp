@@ -27,8 +27,6 @@ Size Rectangle::getSize()
 
 bool Rectangle::CollisionCheck(Ball &ball)
 {
-	bool collisionCheck = false;
-
 	Vector horizontalCorner;
 	Vector verticalCorner;
 
@@ -45,5 +43,6 @@ bool Rectangle::CollisionCheck(Ball &ball)
 	{
 		return true;
 	}
-	return false;
+	else
+		return false;
 }

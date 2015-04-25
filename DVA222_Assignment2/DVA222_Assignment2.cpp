@@ -9,18 +9,18 @@
 
 #include "Ball.h"
 #include "SpeedRectangle.h"
-#include "Rectangle.h"
-#include "Line.h"
+#include "SlowRectangle.h"
 
 int ballCount = 20;
 int speedRectangleCount = 2;
+int slowRectangleCount = 2;
 int lineCount = 4;
-Vector newSpeed;
+
 
 Ball **balls = new Ball*[ballCount];
 SpeedRectangle **speedRectangles = new SpeedRectangle*[speedRectangleCount];
+SlowRectangle **slowRectangles = new SlowRectangle*[slowRectangleCount];
 
-Line **lines = new Line*[lineCount];
 
 		 
 int _tmain(int argc, char** argv)
@@ -40,11 +40,9 @@ int _tmain(int argc, char** argv)
 	speedRectangles[0] = new SpeedRectangle(200, 200, 50, 300);
 	speedRectangles[1] = new SpeedRectangle(400, 100, 50, 100);
 
+	slowRectangles[0] = new SlowRectangle(300, 200, 50, 300);
+	slowRectangles[1] = new SlowRectangle(100, 100, 50, 100);
 
-	for (int i = 0; i < lineCount; i++)
-	{
-		lines[i] = new Line(20, 20, 200, 20);
-	}
 
 	//NOTE:
 	//----------------------------------------------------------------------
@@ -72,9 +70,19 @@ void Draw()
 	{
 		for (int j = 0; j < speedRectangleCount; j++)
 		{
-			collisionCheck=speedRectangles[j]->CollisionCheck(*balls[i]);
-			if (collisionCheck)
+			
+			collisionCheck = speedRectangles[j]->CollisionCheck(*balls[i]);
+
+			if (collisionCheck == true){
 				balls[i]->SetSpeed(Vector(speedRectangles[j]->getNewSpeed()*balls[i]->GetSpeed().X, speedRectangles[j]->getNewSpeed()*balls[i]->GetSpeed().Y));
+			}
+		}
+		for (int j = 0; j < slowRectangleCount; j++)
+		{
+			collisionCheck = slowRectangles[j]->CollisionCheck(*balls[i]);
+			if (collisionCheck == true){
+				balls[i]->SetSpeed(Vector(slowRectangles[j]->getNewSpeed()*balls[i]->GetSpeed().X, slowRectangles[j]->getNewSpeed()*balls[i]->GetSpeed().Y));
+			}
 		}
 		balls[i]->Update();
 		balls[i]->Draw();
@@ -85,9 +93,9 @@ void Draw()
 		speedRectangles[i]->Draw();
 	}
 
-	for (int i = 0; i < lineCount; i++)
+	for (int i = 0; i < slowRectangleCount; i++)
 	{
-		lines[i]->Draw();
+		slowRectangles[i]->Draw();
 	}
 
 

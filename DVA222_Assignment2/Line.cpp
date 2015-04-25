@@ -19,3 +19,8 @@ void Line::Draw()
 {
 	DrawLine(pos1.X, pos1.Y, pos2.X, pos2.Y);
 }
+
+bool Line::CollisionCheck(Ball &ball)
+{
+	return false;
+}

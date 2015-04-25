@@ -8,7 +8,7 @@ public:
 	~Line();
 
 	virtual void Draw();
-
+	virtual bool CollisionCheck(Ball &ball);
 
 protected:
 	Vector pos1, pos2;
