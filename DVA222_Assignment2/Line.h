@@ -9,6 +9,8 @@ public:
 
 	virtual void Draw();
 
+	bool Line::CollisionCheck(Ball &ball);
+
 
 protected:
 	Vector pos1, pos2;
