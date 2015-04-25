@@ -10,7 +10,7 @@ public:
 	virtual void Draw();
 	Size getSize();
 
-	void onCollisionEnter(Ball &ball);
+	bool CollisionCheck(Ball &ball);
 
 protected:
 	Size size;

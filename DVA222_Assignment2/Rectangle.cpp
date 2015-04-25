@@ -25,28 +25,25 @@ Size Rectangle::getSize()
 	return size;
 }
 
-void Rectangle::onCollisionEnter(Ball &ball)
+bool Rectangle::CollisionCheck(Ball &ball)
 {
 	bool collisionCheck = false;
 
 	Vector horizontalCorner;
 	Vector verticalCorner;
-	Vector newSpeed;
-	newSpeed.X = ball.GetSpeed().X + 10;
-	newSpeed.Y = ball.GetSpeed().Y + 10;
 
-	horizontalCorner.X = GetPosition().X - getSize().Width / 2;
-	horizontalCorner.Y = GetPosition().X + getSize().Width / 2;
+	horizontalCorner.X = GetPosition().X;
+	horizontalCorner.Y = GetPosition().X + getSize().Width;
 
-	verticalCorner.X = GetPosition().Y - getSize().Height / 2;
-	verticalCorner.Y = GetPosition().Y + getSize().Height / 2;
+	verticalCorner.X = GetPosition().Y;
+	verticalCorner.Y = GetPosition().Y + getSize().Height;
 
-	if (ball.GetPosition().X + ball.GetRadius() / 2 > horizontalCorner.X
-		&& ball.GetPosition().X - ball.GetRadius() / 2 < horizontalCorner.Y
-		&& ball.GetPosition().Y + ball.GetRadius() / 2 > verticalCorner.X
-		&& ball.GetPosition().Y - ball.GetRadius() / 2 < verticalCorner.Y)
+	if (ball.GetPosition().X + (ball.GetRadius() / 2) > horizontalCorner.X
+		&& ball.GetPosition().X - (ball.GetRadius() / 2) < horizontalCorner.Y
+		&& ball.GetPosition().Y + (ball.GetRadius() / 2) > verticalCorner.X
+		&& ball.GetPosition().Y - (ball.GetRadius() / 2) < verticalCorner.Y)
 	{
-		collisionCheck = true;
-		ball.SetSpeed(newSpeed);
+		return true;
 	}
+	return false;
 }
