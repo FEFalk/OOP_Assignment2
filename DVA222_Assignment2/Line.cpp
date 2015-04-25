@@ -23,21 +23,27 @@ bool Line::CollisionCheck(Ball &ball)
 {
 	bool collisionCheck = false;
 
-	Vector horizontalCorner;
-	Vector verticalCorner;
+	Vector startingPoint;
+	Vector endingPoint;
 
-	horizontalCorner.X = GetPosition().X;
-	horizontalCorner.Y = GetPosition().X + getSize().Width;
+	startingPoint.X = pos1.X;
+	startingPoint.Y = pos1.Y;
+	endingPoint.X = pos2.X;
+	endingPoint.Y = pos2.Y;
 
-	verticalCorner.X = GetPosition().Y;
-	verticalCorner.Y = GetPosition().Y + getSize().Height;
 
-	if (ball.GetPosition().X + (ball.GetRadius() / 2) > horizontalCorner.X
-		&& ball.GetPosition().X - (ball.GetRadius() / 2) < horizontalCorner.Y
-		&& ball.GetPosition().Y + (ball.GetRadius() / 2) > verticalCorner.X
-		&& ball.GetPosition().Y - (ball.GetRadius() / 2) < verticalCorner.Y)
+	if ((ball.GetPosition().X + (ball.GetRadius() / 2) > startingPoint.X
+		&& ball.GetPosition().X - (ball.GetRadius() / 2) < endingPoint.X
+		&& ball.GetPosition().Y + (ball.GetRadius() / 2) == endingPoint.Y)
+		|| (ball.GetPosition().Y - (ball.GetRadius() / 2) > startingPoint.Y
+		&& ball.GetPosition().Y + (ball.GetRadius() / 2) < endingPoint.Y
+		&& ball.GetPosition().X + (ball.GetRadius() / 2) == endingPoint.X))
 	{
 		return true;
 	}
-	return false;
+	else
+	{
+		return false;
+	}
+	
 }
