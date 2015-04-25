@@ -87,6 +87,7 @@
     <ClInclude Include="MovingObjects.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Shape.h" />
+    <ClInclude Include="SlowRectangle.h" />
     <ClInclude Include="SpeedRectangle.h" />
     <ClInclude Include="StaticObjects.h" />
     <ClInclude Include="stdafx.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="MovingObjects.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="SlowRectangle.cpp" />
     <ClCompile Include="SpeedRectangle.cpp" />
     <ClCompile Include="StaticObjects.cpp" />
     <ClCompile Include="stdafx.cpp" />

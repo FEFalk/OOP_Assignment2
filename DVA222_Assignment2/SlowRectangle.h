@@ -1,12 +1,12 @@
 #pragma once
 #include "Rectangle.h"
 
-class SpeedRectangle: public Rectangle
+class SlowRectangle : public Rectangle
 {
 public:
-	SpeedRectangle(int x, int y, double width, double height);
-	~SpeedRectangle();
-	
+	SlowRectangle(int x, int y, double width, double height);
+	~SlowRectangle();
+
 	virtual void Draw();
 	float getNewSpeed();
 

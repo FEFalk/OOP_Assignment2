@@ -8,7 +8,6 @@ public:
 	StaticObjects();
 	~StaticObjects();
 
-	virtual bool CollisionCheck(Ball &ball) = 0;
 
 
 };

@@ -1,6 +1,6 @@
 #pragma once
-
 #include "MovingObjects.h"
+#include "StaticObjects.h"
 
 class Ball : public MovingObjects
 {
@@ -10,8 +10,11 @@ public:
 
 	virtual void Draw();
 	double GetRadius();
+	bool GetCollisionStatus(int i);
 	
 protected: 
 	double radius;
+	bool collisionStatus[4];
+	int statusSize;
 
 };

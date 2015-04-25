@@ -8,9 +8,7 @@ public:
 	~Line();
 
 	virtual void Draw();
-
-	bool Line::CollisionCheck(Ball &ball);
-
+	virtual bool CollisionCheck(Ball &ball);
 
 protected:
 	Vector pos1, pos2;
