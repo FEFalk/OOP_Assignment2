@@ -8,7 +8,8 @@ public:
 	StaticObjects();
 	~StaticObjects();
 
-
+protected:
+	Size size;
 
 };
 

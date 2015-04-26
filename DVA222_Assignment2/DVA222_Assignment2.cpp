@@ -10,16 +10,14 @@
 #include "Ball.h"
 #include "SpeedRectangle.h"
 #include "SlowRectangle.h"
-#include "Rectangle.h"
-#include "Line.h"
 #include "VerticalLine.h"
 #include "HorizontalLine.h"
 
 int ballCount = 20;
 int speedRectangleCount = 2;
 int slowRectangleCount = 2;
-int lineCount = 4;
-int verticalLineCount = 4;
+
+int verticalLineCount = 2;
 int horizontalLineCount = 2;
 
 
@@ -45,27 +43,17 @@ int _tmain(int argc, char** argv)
 		balls[i]->SetSpeed(Vector(10 * rand() / RAND_MAX -5 , 10 * rand() / RAND_MAX -5));
 	}
 
-	speedRectangles[0] = new SpeedRectangle(200, 200, 50, 300);
-	speedRectangles[1] = new SpeedRectangle(400, 100, 50, 100);
+	speedRectangles[0] = new SpeedRectangle(150, 150, 100, 75);
+	speedRectangles[1] = new SpeedRectangle(550, 400, 100, 75);
 
-	slowRectangles[0] = new SlowRectangle(300, 200, 50, 300);
-	slowRectangles[1] = new SlowRectangle(100, 100, 50, 100);
+	slowRectangles[0] = new SlowRectangle(150, 400, 100, 75);
+	slowRectangles[1] = new SlowRectangle(550, 150, 100, 75);
 
-	for (int i = 0; i < verticalLineCount; i++)
-	{
-		verticalLines[i] = new VerticalLine(500, 200, 500, 400);
-	}
-	verticalLines[0] = new VerticalLine(100, 200, 100, 400);
-	verticalLines[1] = new VerticalLine(300, 200, 300, 400);
-	verticalLines[2] = new VerticalLine(500, 200, 500, 400);
-	verticalLines[3] = new VerticalLine(700, 200, 700, 400);
+	verticalLines[0] = new VerticalLine(50, 50, 50, 550);
+	verticalLines[1] = new VerticalLine(750, 50, 750, 550);
 
-	for (int i = 0; i < horizontalLineCount; i++)
-	{
-		horizontalLines[i] = new HorizontalLine(500, 200, 500, 400);
-	}
-	horizontalLines[0] = new HorizontalLine(200, 50, 600, 50);
-	horizontalLines[1] = new HorizontalLine(200, 550, 600, 550);
+	horizontalLines[0] = new HorizontalLine(50, 50, 750, 50);
+	horizontalLines[1] = new HorizontalLine(50, 550, 750, 550);
 
 	//NOTE:
 	//----------------------------------------------------------------------
@@ -86,16 +74,14 @@ int _tmain(int argc, char** argv)
 ////------------------------------------------------------------------------------
 void Draw()
 {
-	bool collisionCheck, verticalLineCollisionCheck, horizontalLineCollisionCheck;
+	bool collisionCheck;
 	SetColor(255, 255, 255);
 
 	for (int i = 0; i < ballCount; i++)
 	{
 		for (int j = 0; j < speedRectangleCount; j++)
 		{
-			
 			collisionCheck = speedRectangles[j]->CollisionCheck(*balls[i]);
-
 			if (collisionCheck == true){
 				balls[i]->SetSpeed(Vector(speedRectangles[j]->getNewSpeed()*balls[i]->GetSpeed().X, speedRectangles[j]->getNewSpeed()*balls[i]->GetSpeed().Y));
 		}
@@ -109,14 +95,14 @@ void Draw()
 		}
 		for (int j = 0; j < verticalLineCount; j++)
 		{
-			verticalLineCollisionCheck = verticalLines[j]->CollisionCheck(*balls[i]);
-			if (verticalLineCollisionCheck)
+			collisionCheck = verticalLines[j]->CollisionCheck(*balls[i]);
+			if (collisionCheck == true)
 				balls[i]->SetSpeed(Vector(balls[i]->GetSpeed().X*-1, balls[i]->GetSpeed().Y));
 		}
 		for (int j = 0; j < horizontalLineCount; j++)
 		{
-			horizontalLineCollisionCheck = horizontalLines[j]->CollisionCheck(*balls[i]);
-			if (horizontalLineCollisionCheck)
+			collisionCheck = horizontalLines[j]->CollisionCheck(*balls[i]);
+			if (collisionCheck == true)
 				balls[i]->SetSpeed(Vector(balls[i]->GetSpeed().X, balls[i]->GetSpeed().Y*-1));
 		}
 		balls[i]->Update();
@@ -129,13 +115,15 @@ void Draw()
 	}
 
 	for (int i = 0; i < slowRectangleCount; i++)
+	{
+		slowRectangles[i]->Draw();
+	}
 	for (int i = 0; i < verticalLineCount; i++)
 	{
 		verticalLines[i]->Draw();
 	}
 	for (int i = 0; i < horizontalLineCount; i++)
 	{
-		slowRectangles[i]->Draw();
 		horizontalLines[i]->Draw();
 	}
 

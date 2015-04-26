@@ -30,11 +30,11 @@ bool Rectangle::CollisionCheck(Ball &ball)
 	Vector horizontalCorner;
 	Vector verticalCorner;
 
-	horizontalCorner.X = GetPosition().X;
-	horizontalCorner.Y = GetPosition().X + getSize().Width;
+	horizontalCorner.X = position.X;
+	horizontalCorner.Y = position.X + size.Width;
 
-	verticalCorner.X = GetPosition().Y;
-	verticalCorner.Y = GetPosition().Y + getSize().Height;
+	verticalCorner.X = position.Y;
+	verticalCorner.Y = position.Y + size.Height;
 
 	if (ball.GetPosition().X + (ball.GetRadius() / 2) > horizontalCorner.X
 		&& ball.GetPosition().X - (ball.GetRadius() / 2) < horizontalCorner.Y

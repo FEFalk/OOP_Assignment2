@@ -13,8 +13,7 @@ public:
 
 	bool CollisionCheck(Ball &ball);
 
-protected:
-	Size size;
+
 
 };
 

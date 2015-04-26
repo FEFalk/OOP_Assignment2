@@ -3,7 +3,8 @@
 
 HorizontalLine::HorizontalLine(int x, int y, int x2, int y2) : Line(x, y, x2, y2)
 {
-
+	size.Height = 5;
+	size.Width = 0;
 }
 HorizontalLine::~HorizontalLine()
 {

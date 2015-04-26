@@ -8,9 +8,6 @@ public:
 	~VerticalLine();
 
 	virtual void Draw();
-	float getNewSpeed();
-protected:
 
-	float newSpeed;
 };
 

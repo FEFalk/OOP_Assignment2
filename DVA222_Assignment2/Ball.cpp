@@ -8,11 +8,6 @@ Ball::Ball(int x, int y, int r)
 	position.X = x;
 	position.Y = y;
 	radius = r;
-	statusSize = 4;
-	for (int i = 0; i < statusSize; i++)
-	{
-		collisionStatus[i] = false;
-	}
 }
 
 //Destructor
@@ -31,12 +26,4 @@ void Ball::Draw()
 double Ball::GetRadius()
 {
 	return radius;
-}
-
-bool Ball::GetCollisionStatus(int i)
-{
-	if (i < statusSize && i >= 0)
-		return collisionStatus[i];
-	else
-		return 0;
 }

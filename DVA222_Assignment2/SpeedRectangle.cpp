@@ -3,7 +3,7 @@
 
 SpeedRectangle::SpeedRectangle(int x, int y, double width, double height) : Rectangle(x, y, width, height)
 {
-	newSpeed = 1.1;
+	newSpeed = 1.03;
 
 }
 

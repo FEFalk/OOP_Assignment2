@@ -8,5 +8,6 @@ public:
 	~HorizontalLine();
 
 	virtual void Draw();
+
 };
 

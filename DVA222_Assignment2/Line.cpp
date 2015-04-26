@@ -21,23 +21,20 @@ void Line::Draw()
 }
 bool Line::CollisionCheck(Ball &ball)
 {
-	bool collisionCheck = false;
-
 	Vector startingPoint;
 	Vector endingPoint;
 
 	startingPoint.X = pos1.X;
 	startingPoint.Y = pos1.Y;
-	endingPoint.X = pos2.X;
-	endingPoint.Y = pos2.Y;
+	endingPoint.X = pos2.X+size.Width;
+	endingPoint.Y = pos2.Y+size.Height;
 
+	
 
-	if ((ball.GetPosition().X + (ball.GetRadius() / 2) > startingPoint.X
+	if (ball.GetPosition().X + (ball.GetRadius() / 2) > startingPoint.X
 		&& ball.GetPosition().X - (ball.GetRadius() / 2) < endingPoint.X
-		&& ball.GetPosition().Y + (ball.GetRadius() / 2) == endingPoint.Y)
-		|| (ball.GetPosition().Y - (ball.GetRadius() / 2) > startingPoint.Y
-		&& ball.GetPosition().Y + (ball.GetRadius() / 2) < endingPoint.Y
-		&& ball.GetPosition().X + (ball.GetRadius() / 2) == endingPoint.X))
+		&& ball.GetPosition().Y + (ball.GetRadius() / 2) > startingPoint.Y
+		&& ball.GetPosition().Y - (ball.GetRadius() / 2) < endingPoint.Y)
 	{
 		return true;
 	}
